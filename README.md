@@ -23,4 +23,4 @@ Moves a number toward a target destination
 `step` = Amount to change by
 
 # How To Install
-`pip install git+https://github.com/Aurlex/py_trinkets.git
+`pip install git+https://github.com/Aurlex/py_trinkets.git`
