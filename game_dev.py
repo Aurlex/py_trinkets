@@ -1,6 +1,3 @@
-from py_trinkets import *
-
-
 def clamp(val, max_val=None, min_val=None):
     """
     This function limits a value to a maximum and minimum

@@ -1,6 +1,3 @@
-from py_trinkets import *
-
-
 class Vector2D(object):
     """
     Can be used to do complex spatial operations in 2D\n
