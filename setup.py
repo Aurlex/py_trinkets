@@ -8,6 +8,5 @@ setup(
     author_email="aurlex1@gmail.com",
     packages=find_packages(),
     license="MIT",
-    long_description=open("README.txt").read(),
 
 )
