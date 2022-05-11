@@ -26,7 +26,7 @@ def move_toward(val, dest, step):
     `step`: Step between values
     """
     if val < dest:
-        val = clamp(val + step, dest)
+        val = clamp(val + abs(step), dest)
     if val > dest:
-        val = clamp(val - step, dest)
+        val = clamp(val - abs(step), dest)
     return val
