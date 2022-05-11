@@ -3,7 +3,7 @@
 # Python Tools
 Contributions of coding club to simplify lengthy code to single functions
 
-# Functions Include
+# Features Include
 
 #### `clamp(val, max_val, min_val)` 
 Limits a number to a certain maximum and minimum value
@@ -22,5 +22,13 @@ Moves a number toward a target destination
 
 `step` = Amount to change by
 
+#### `Vector2D(X, Y)`
+A custom data class that allows for Vector points in 2D space.
+
 # How To Install
 `pip install git+https://github.com/Aurlex/py_trinkets.git`
+
+# TODO
+
+- ???
+- Think of ideas
