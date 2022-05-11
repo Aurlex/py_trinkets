@@ -1,5 +1,3 @@
 __version__ = "dev"
 
-from mathematics import *
-from game_dev import *
-from tools import *
+import mathematics, game_dev, tools
