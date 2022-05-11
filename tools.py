@@ -1,1 +1,4 @@
-#TODO things :)
+from py_trinkets import *
+
+
+# TODO things :)

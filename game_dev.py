@@ -1,7 +1,10 @@
+from py_trinkets import *
+
+
 def clamp(val, max_val=None, min_val=None):
     """
     This function limits a value to a maximum and minimum
-    
+
     `val`: Value to be clamped
     `max_val`: Maximum constraint
     `min_val`: Minimum constraint
