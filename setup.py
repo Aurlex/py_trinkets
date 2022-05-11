@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-from py_trinkets import __version__
 
 
 setup(
