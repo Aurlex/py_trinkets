@@ -8,5 +8,5 @@ setup(
     url="https://github.com/Aurlex/py_trinkets",
     author="Aurlex",
     author_email="aurlex1@gmail.com",
-    py_modules=find_packages(),
+    packages=find_packages()
 )
