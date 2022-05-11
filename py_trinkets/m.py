@@ -24,10 +24,13 @@ class Vector3D(object):
     def __repr__(self):
         return repr((self.x, self.y, self.z))
 
+
     def __matmul__(self, other):
         if not isinstance(other, Vector3D):
             raise TypeError("Can only take dot product of two Vector3D objects")
         return self.x * other.x + self.y * other.y + self.z * other.z
+    
+    dot = __matmul__
 
     def __sub__(self, other):
         return Vector3D(self.x - other.x, self.y - other.y, self.z - other.z)
@@ -100,6 +103,8 @@ class Vector2D(object):
         if not isinstance(other, Vector2D):
             raise TypeError("Can only take dot product of two Vector2D objects")
         return self.x * other.x + self.y * other.y
+
+    dot = __matmul__
 
     def __sub__(self, other):
         return Vector2D(self.x - other.x, self.y - other.y)
