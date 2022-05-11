@@ -1,6 +1,15 @@
 from py_trinkets import *
 
+
 class Vector2D(object):
+    """
+    Can be used to do complex spatial operations in 2D\n
+    Data Type `Vector2D(x, y)`\n
+        `x`: X component | `int, float`\n
+        `y`: Y component | `int, float`
+    
+    See wiki for more details.
+    """
 
     def __init__(self, x, y):
         self.x = x
@@ -51,31 +60,46 @@ class Vector2D(object):
         return (self.x**2 + self.y**2) ** (1 / 2)
 
     def distance_to(self, other):
+        """This function returns the distance to another `Vector2D`
+        `other`: Other `Vector2D`
+        """
         return abs(self - other)
 
     def normalise(self):
+        """This function returns the normalised vector of a `Vector2D` 
+        """
         if self.x != 0 or self.y != 0:
             magnitude = ((self.x**2) + (self.y**2)) ** (1 / 2)
             return Vector2D(self.x / magnitude, self.y / magnitude)
         else:
-            return Vector2D(0, 0)    
+            return Vector2D(0, 0)
+
 
 class Vector2D_ZERO(Vector2D):
+    "Creates a `Vector2D` with a value of (0, 0)"
     def __init__(self):
         Vector2D.__init__(self, 0, 0)
 
-class Vector2D_UP(Vector2D):
-    def __init__(self):
-        Vector2D.__init__(self, 0, 1)
 
-class Vector2D_DOWN(Vector2D):
+class Vector2D_UP(Vector2D):
+    "Creates a `Vector2D` with a value of (0, 0)"
     def __init__(self):
         Vector2D.__init__(self, 0, -1)
 
+
+class Vector2D_DOWN(Vector2D):
+    "Creates a `Vector2D` with a value of (0, 0)"
+    def __init__(self):
+        Vector2D.__init__(self, 0, 1)
+
+
 class Vector2D_LEFT(Vector2D):
+    "Creates a `Vector2D` with a value of (0, 0)"
     def __init__(self):
         Vector2D.__init__(self, -1, 0)
 
+
 class Vector2D_RIGHT(Vector2D):
+    "Creates a `Vector2D` with a value of (0, 0)"
     def __init__(self):
         Vector2D.__init__(self, 1, 0)
