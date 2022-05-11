@@ -1,4 +1,3 @@
-[![Upload Python Package](https://github.com/Aurlex/py_trinkets/actions/workflows/python-publish.yml/badge.svg)](https://github.com/Aurlex/py_trinkets/actions/workflows/python-publish.yml)
 
 # Python Tools
 Contributions of coding club to simplify lengthy code to single functions
