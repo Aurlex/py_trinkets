@@ -1,9 +1,5 @@
-import py_trinkets.game_dev
-import py_trinkets.mathematics
-import py_trinkets.tools
+import py_trinkets.g
+import py_trinkets.m
+import py_trinkets.t
 
-__all__ = ["game_dev", "mathematics", "tools", "py_trinkets"]
-
-from py_trinkets.game_dev import *
-from py_trinkets.mathematics import *
-from py_trinkets.tools import *
+__all__ = ["g", "m", "t", "py_trinkets"]
