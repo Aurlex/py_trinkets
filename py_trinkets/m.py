@@ -90,7 +90,7 @@ class Vector2D(object):
     See wiki for more details.
     """
 
-    def __init__(self, x=0, y=0):
+    def __init__(self, x: int | float = 0, y: int | float = 0):
         self.x = x
         self.y = y
 
@@ -100,7 +100,7 @@ class Vector2D(object):
     def __repr__(self):
         return repr((self.x, self.y))
 
-    def __matmul__(self, other):
+    def __matmul__(self, other: m.Vector2D):
         if not isinstance(other, Vector2D):
             raise TypeError(
                 "Can only take dot product of two Vector2D objects")
@@ -108,31 +108,31 @@ class Vector2D(object):
 
     dot = __matmul__
 
-    def __sub__(self, other):
+    def __sub__(self, other: m.Vector2D):
         return Vector2D(self.x - other.x, self.y - other.y)
 
-    def __add__(self, other):
+    def __add__(self, other: m.Vector2D):
         return Vector2D(self.x + other.x, self.y + other.y)
 
-    def __mul__(self, other):
+    def __mul__(self, other: m.Vector2D | int):
         if isinstance(other, int) or isinstance(other, float):
             return Vector2D(self.x * other, self.y * other)
         if isinstance(other, Vector2D):
             return Vector2D(self.x * other.x, self.y * other.y)
 
-    def __rmul__(self, other):
+    def __rmul__(self, other: m.Vector2D | int):
         return self.__mul__(other)
 
     def __neg__(self):
         return Vector2D(-self.x, -self.y)
 
-    def __truediv__(self, other):
+    def __truediv__(self, other: m.Vector2D | int):
         if isinstance(other, int) or isinstance(other, float):
             return Vector2D(self.x / other, self.y / other)
         if isinstance(other, Vector2D):
             return Vector2D(self.x / other.x, self.y / other.y)
 
-    def __mod__(self, other):
+    def __mod__(self, other: m.Vector2D | int):
         if isinstance(other, int) or isinstance(other, float):
             return Vector2D(self.x % other, self.y % other)
         if isinstance(other, Vector2D):
@@ -141,7 +141,7 @@ class Vector2D(object):
     def __abs__(self):
         return (self.x**2 + self.y**2) ** (1 / 2)
 
-    def distance_to(self, other):
+    def distance_to(self, other: m.Vector2D):
         """This function returns the distance to another `Vector2D`
         `other`: Other `Vector2D`
         """
