@@ -24,12 +24,12 @@ class Vector3D(object):
     def __repr__(self):
         return repr((self.x, self.y, self.z))
 
-
     def __matmul__(self, other):
         if not isinstance(other, Vector3D):
-            raise TypeError("Can only take dot product of two Vector3D objects")
+            raise TypeError(
+                "Can only take dot product of two Vector3D objects")
         return self.x * other.x + self.y * other.y + self.z * other.z
-    
+
     dot = __matmul__
 
     def __sub__(self, other):
@@ -74,7 +74,8 @@ class Vector3D(object):
     def normalise(self):
         """This function returns the normalised vector of a `Vector3D`"""
         if self.x != 0 or self.y != 0:
-            return Vector3D(self.x / abs(self), self.y / abs(self), self.z / abs(self))
+            magnitude = (self.x**2 + self.y**2 + self.z**2) ** (1 / 2)
+            return Vector3D(self.x / magnitude, self.y / magnitude, self.z / magnitude)
         else:
             return Vector3D(0, 0, 0)
 
@@ -101,7 +102,8 @@ class Vector2D(object):
 
     def __matmul__(self, other):
         if not isinstance(other, Vector2D):
-            raise TypeError("Can only take dot product of two Vector2D objects")
+            raise TypeError(
+                "Can only take dot product of two Vector2D objects")
         return self.x * other.x + self.y * other.y
 
     dot = __matmul__
@@ -148,7 +150,7 @@ class Vector2D(object):
     def normalise(self):
         """This function returns the normalised vector of a `Vector2D`"""
         if self.x != 0 or self.y != 0:
-            magnitude = ((self.x**2) + (self.y**2)) ** (1 / 2)
+            magnitude = (self.x**2 + self.y**2) ** (1 / 2)
             return Vector2D(self.x / magnitude, self.y / magnitude)
         else:
             return Vector2D(0, 0)
