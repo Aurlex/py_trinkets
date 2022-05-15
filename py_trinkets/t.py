@@ -24,6 +24,17 @@ class StateDict(object):
             self.reset_file()
             self.start()
 
+    def unpack(self, whole=True, start=0, end=0):
+        self.read()
+        if not whole:
+            data_list = list(self.data)
+            unpacked_dict = {}
+            for x in range(start, end):
+                unpacked_dict[data_list[x]] = self.data[data_list[x]]
+            return unpacked_dict
+        else:
+            return self.data
+
     def exit(self):
         """This allows you to close a `StateDict` after using it."""
         self.f.close()
@@ -71,4 +82,5 @@ class StateDict(object):
     def read(self):
         """Function to read the `StateDict`"""
         self.refresh_file()
+        self.data = eval(self.f.read())
         return self.f.read()
