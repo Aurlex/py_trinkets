@@ -15,7 +15,6 @@ class bcolours:
     UNDERLINE = "\033[4m"
 
 
-SIZE = 20
 TERRAIN = [
     ",",
     ".",
@@ -30,6 +29,7 @@ TERRAIN = [
     "`",
     "'",
     "*",
+    ";"
 ]
 
 file = StateDict("floor")

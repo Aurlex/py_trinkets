@@ -15,6 +15,7 @@ floor = file.unpack()
 global_vars = StateDict("global_vars")
 SIZE = global_vars.unpack()["SIZE"]
 
+
 VIEWPORT_WIDTH = 20
 VIEWPORT_HEIGHT = 20
 
@@ -90,51 +91,39 @@ class KinematicBody(object):
         self.position.y = clamp(self.position.y, SIZE - 1, -SIZE + 1)
         self.hitbox.position = self.position
 
-Wall = Hitbox(position=Vector2D(-2, -2), name="Wall")
-Player = KinematicBody(position=Vector2D(0, 0), hitbox_name="Player")
-Enemy = KinematicBody(position=Vector2D(2, -2), hitbox_name="Enemy")
 
-
-def board_reset():
-    global grid, floor
-    clear()
+def update():
+    global grid, hitboxes
     for y in range(-int(VIEWPORT_HEIGHT / 2), int(VIEWPORT_HEIGHT / 2) + 1):
         for x in range(-int(VIEWPORT_WIDTH / 2), int(VIEWPORT_WIDTH / 2) + 1):
             vx = x + Player.position.x
             vy = y + Player.position.y
+            vector_val = Vector2D(vx, vy)
             if (vx, vy) in grid.keys():
-                grid[(vx, vy)] = [Vector2D(vx, vy), floor[(vx, vy)]]
+                grid[(vx, vy)] = [vector_val, floor[(vx, vy)]]
+            for hitbox in hitboxes:
+                if (
+                    (hitbox.right_bound - vx >= -hitbox.position.x)
+                    and (hitbox.left_bound - vx <= -hitbox.position.x)
+                    and (hitbox.bottom_bound - vy >= -hitbox.position.y)
+                    and (hitbox.top_bound - vy <= -hitbox.position.y)
+                ):
+                    grid[(vx, vy)] = [vector_val, HITBOX_MARKER]
 
-
-def update():
-    global grid, hitboxes
-    board_reset()
-
-    for hitbox in hitboxes:
-        for body in kinematic_bodies:
-            if KinematicBody.collide(body, hitbox):
-                print(f"{body.hitbox.name} is colliding with {hitbox.name}")
-            else:
-                print("")
-        for key, value in grid.items():
-            vector_val = Vector2D(value[0].x, value[0].y)
-            if (
-                (hitbox.right_bound - vector_val.x >= -hitbox.position.x)
-                and (hitbox.left_bound - vector_val.x <= -hitbox.position.x)
-                and (hitbox.bottom_bound - vector_val.y >= -hitbox.position.y)
-                and (hitbox.top_bound - vector_val.y <= -hitbox.position.y)
-            ):
-                grid[key] = [value[0], HITBOX_MARKER]
-            if vector_val == hitbox.position:
-                if hitbox is Player.hitbox:
-                    grid[key] = [value[0], PLAYER_MARKER]
-                if hitbox is Enemy.hitbox:
-                    grid[key] = [value[0], ENEMY_MARKER]
+                if vector_val == hitbox.position:
+                    if hitbox is Player.hitbox:
+                        grid[(vx, vy)] = [vector_val, PLAYER_MARKER]
+                    elif hitbox is Enemy.hitbox:
+                        grid[(vx, vy)] = [vector_val, ENEMY_MARKER]
     draw()
 
 
 def draw():
     global grid, SIZE
+    clear()
+    print(
+        f"Player: {Player.position}, {Player.velocity}\nEnemy: {Enemy.position}, {Enemy.velocity}"
+    )
     for y in range(-int(VIEWPORT_HEIGHT / 2), int(VIEWPORT_HEIGHT / 2) + 1):
         for x in range(-int(VIEWPORT_WIDTH / 2), int(VIEWPORT_WIDTH / 2) + 1):
             vx = x + Player.position.x
@@ -149,19 +138,25 @@ def draw():
         print("\n", end="")
 
 
+Wall = Hitbox(position=Vector2D(-2, -2), name="Wall")
+Enemy = KinematicBody(position=Vector2D(20, -20), hitbox_name="Enemy")
+Player = KinematicBody(position=Vector2D(0, 0), hitbox_name="Player")
+
+
 update()
 while True:
+
     if keyboard.is_pressed("w"):
-        Player.velocity.y = -1
+        Player.velocity.y = -2
     elif keyboard.is_pressed("s"):
-        Player.velocity.y = 1
+        Player.velocity.y = 2
     else:
         Player.velocity.y = 0
 
     if keyboard.is_pressed("a"):
-        Player.velocity.x = -1
+        Player.velocity.x = -2
     elif keyboard.is_pressed("d"):
-        Player.velocity.x = 1
+        Player.velocity.x = 2
     else:
         Player.velocity.x = 0
 
@@ -171,4 +166,4 @@ while True:
         body.move()
         update()
 
-    time.sleep(1 / 60)
+    time.sleep(1 / 45)
