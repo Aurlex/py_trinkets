@@ -33,6 +33,9 @@ TERRAIN = [
 ]
 
 file = StateDict("floor")
+global_vars = StateDict("global_vars")
+SIZE = global_vars.unpack()["SIZE"]
+
 floor = {}
 
 for y in range(-SIZE, SIZE + 1):

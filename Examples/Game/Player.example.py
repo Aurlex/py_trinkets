@@ -16,9 +16,9 @@ grid = {}
 
 file = StateDict("floor")
 floor = file.unpack()
+global_vars = StateDict("global_vars")
+SIZE = global_vars.unpack()["SIZE"]
 
-
-SIZE = 20
 VIEWPORT_WIDTH = 20
 VIEWPORT_HEIGHT = 20
 
