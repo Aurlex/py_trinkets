@@ -30,7 +30,7 @@ class StateDict(object):
             self.start()
 
     def unpack(self, whole=True, start=0, end=0):
-        """Function to return data from a `StateDict`
+        """Function to return data from a `StateDict` as a `dictionary`
         `whole`: When `True`, returns the whole `StateDict`
         `start`: First number in a range of keypairs to return
         `end`: Last number in a range of keypairs to return"""
@@ -51,11 +51,13 @@ class StateDict(object):
     def append_data(self, key, value, write=True):
         """Function to append new data to a `StateDict`
         `key`: Key to append to the `StateDict`
-        `value`: Value to append to the `StateDict`"""
+        `value`: Value to append to the `StateDict`
+        `write`: When `False`, does not append data to the `StateDict`, but to a temporary dictionary"""
         self.data[key] = value
         self.reset_file(True, False)
         if write:
             self.f.write(str(self.data))
+        self.refresh_file()
 
     def append_dict(self, dict, write=True, overwrite=False):
         """Function to append entire dictionaries to a `StateDict`
@@ -72,11 +74,12 @@ class StateDict(object):
                 self.f.write(str(dict))
             else:
                 self.f.write(str(self.data))
+        self.refresh_file()
 
     def reset_file(self, erase=False, backup=True):
         """Function to completely reset a `StateDict`
-        `erase`: When `True`, prevents the `StateDict` from being reset with `{}` as the file
-        `backup`: When `True`, backs up the `StateDict` to a file in the `{file}.statedict.bak` format"""
+        `erase`: When `True`, prevents the `StateDict` from being reset with `{}` as the data
+        `backup`: When `True`, backs up the `StateDict` to a file in the `{file_name}.statedict.bak` format"""
         self.refresh_file()
         if self.f.read(1) and backup:
             with open(f"{self.f_name}.bak", "w") as bak:
