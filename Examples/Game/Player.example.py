@@ -1,12 +1,8 @@
-import os, random, keyboard, time
+import keyboard, time
 
 from py_trinkets.m import *
 from py_trinkets.g import *
 from py_trinkets.t import *
-
-
-def clear():
-    os.system("cls || clear")
 
 
 kinematic_bodies = []
