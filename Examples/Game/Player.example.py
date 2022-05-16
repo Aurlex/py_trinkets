@@ -1,4 +1,4 @@
-import keyboard, time
+import keyboard, time, random
 
 from py_trinkets.m import *
 from py_trinkets.g import *
