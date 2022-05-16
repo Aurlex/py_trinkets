@@ -32,7 +32,7 @@ TERRAIN = [
     "*",
 ]
 
-file = StateDict("floor.test")
+file = StateDict("floor")
 floor = {}
 
 for y in range(-SIZE, SIZE + 1):

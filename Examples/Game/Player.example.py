@@ -14,7 +14,7 @@ hitboxes = []
 
 grid = {}
 
-file = StateDict("floor.test")
+file = StateDict("floor")
 floor = file.unpack()
 
 
