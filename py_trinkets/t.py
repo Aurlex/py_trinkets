@@ -1,4 +1,4 @@
-import os.system
+from os import system
 
 
 def clear():
