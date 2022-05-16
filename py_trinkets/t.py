@@ -1,5 +1,12 @@
 # TODO things :)
 
+from os import system
+
+
+def clear():
+    """Clears a terminal (May not work on devices without certain permissions)"""
+    os.system("cls || clear")
+
 
 class StateDict(object):
     """Class to create dictionaries that can be stored on disk in the `{file}.statedict` format\n
