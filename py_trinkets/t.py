@@ -1,5 +1,3 @@
-# TODO things :)
-
 from os import system
 
 
@@ -55,17 +53,20 @@ class StateDict(object):
         if write:
             self.f.write(str(self.data))
 
-    def append_dict(self, dict, write=True):
+    def append_dict(self, dict, write=True, overwrite=False):
         """This allows you to append entire dictionaries to a `StateDict`
         `dict`: A dictionary to append to the `StateDict`
         `write`: When `True`, appends data to the `StateDict`,
                           When `False`, only appends data to temporary dictionary"""
-        print(dict)
-        for key, value in dict.items():
-            self.data[key] = value
+        if overwrite:
+            for key, value in dict.items():
+                self.data[key] = value
         self.reset_file(True, False)
         if write:
-            self.f.write(str(self.data))
+            if overwrite:
+                self.f.write(str(dict))
+            else:
+                self.f.write(str(self.data))
 
     def reset_file(self, erase=False, backup=True):
         """Function to completely reset a `StateDict`
