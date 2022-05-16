@@ -1,7 +1,4 @@
-import keyboard, time, os
-
-def clear():
-    os.system("cls || clear")
+import keyboard, time
 
 from py_trinkets.m import *
 from py_trinkets.g import *
