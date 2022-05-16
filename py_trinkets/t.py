@@ -1,9 +1,9 @@
-from os import system
+import os.system
 
 
 def clear():
     """Clears a terminal (May not work on devices without certain permissions)"""
-    os.system("cls || clear")
+    system("cls || clear")
 
 
 class StateDict(object):
