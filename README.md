@@ -2,7 +2,7 @@
 # Python Tools
 Contributions of coding club to simplify lengthy code to single functions
 
-# Features Include
+# Check out some features here ↓
 [py_trinkets wiki](../../wiki)
 
 # How To Install
