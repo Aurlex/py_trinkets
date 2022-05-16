@@ -30,7 +30,9 @@ def move_toward(val: int | float = 0, dest: int | float = 100, step: int | float
 
 
 class Tween():
-    """A class of easing functions to improve moving between values"""
+    """A class of easing functions to improve moving between values
+    
+    See Wiki for more details."""
 
     def lerp(start_val: int | float = 0, dest_val: int | float = 0, pct: int | float = 100):
         """For use in `Tween()`: Allows smooth interpolation between values using various functions

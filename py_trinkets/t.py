@@ -30,22 +30,26 @@ class StateDict(object):
             self.start()
 
     def unpack(self, whole=True, start=0, end=0):
+        """Function to return data from a `StateDict`
+        `whole`: When `True`, returns the whole `StateDict`
+        `start`: First number in a range of keypairs to return
+        `end`: Last number in a range of keypairs to return"""
         self.read()
         if not whole:
             data_list = list(self.data)
             unpacked_dict = {}
-            for x in range(start, end):
+            for x in range(start, end+1):
                 unpacked_dict[data_list[x]] = self.data[data_list[x]]
             return unpacked_dict
         else:
             return self.data
 
     def exit(self):
-        """This allows you to close a `StateDict` after using it."""
+        """Function to close a `StateDict` after using it."""
         self.f.close()
 
     def append_data(self, key, value, write=True):
-        """This allows you to append new data to a `StateDict`
+        """Function to append new data to a `StateDict`
         `key`: Key to append to the `StateDict`
         `value`: Value to append to the `StateDict`"""
         self.data[key] = value
@@ -54,10 +58,11 @@ class StateDict(object):
             self.f.write(str(self.data))
 
     def append_dict(self, dict, write=True, overwrite=False):
-        """This allows you to append entire dictionaries to a `StateDict`
+        """Function to append entire dictionaries to a `StateDict`
         `dict`: A dictionary to append to the `StateDict`
         `write`: When `True`, appends data to the `StateDict`,
-                          When `False`, only appends data to temporary dictionary"""
+                          When `False`, only appends data to temporary dictionary
+        `overwrite`: When `True`, completely overwrites current data in the `StateDict`"""
         if overwrite:
             for key, value in dict.items():
                 self.data[key] = value
