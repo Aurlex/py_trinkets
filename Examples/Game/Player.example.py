@@ -147,16 +147,16 @@ update()
 while True:
 
     if keyboard.is_pressed("w"):
-        Player.velocity.y = -2
+        Player.velocity.y = -1
     elif keyboard.is_pressed("s"):
-        Player.velocity.y = 2
+        Player.velocity.y = 1
     else:
         Player.velocity.y = 0
 
     if keyboard.is_pressed("a"):
-        Player.velocity.x = -2
+        Player.velocity.x = -1
     elif keyboard.is_pressed("d"):
-        Player.velocity.x = 2
+        Player.velocity.x = 1
     else:
         Player.velocity.x = 0
 
@@ -166,4 +166,4 @@ while True:
         body.move()
         update()
 
-    time.sleep(1 / 45)
+    time.sleep(1 / 60)
